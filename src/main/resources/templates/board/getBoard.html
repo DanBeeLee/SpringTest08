@@ -1,0 +1,31 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  
+</head>
+<body th:align="center">
+
+ <div align="center">
+<h2> 게시판 글등록 ( <a th:href="@{/index.html}">처음으로</a>) </h2>
+
+<form action=updateOK.do>
+<input  type=hidden  name="seq" th:value="${m.seq}">
+<table border=1 >
+<tr><td> 제목 </td>  <td><input  type=text  name="title" th:value="${m.title}"> </td></tr>  
+<tr><td> 작성자 </td>  <td> [[${m.name}]] </td></tr>
+<tr><td> 내용 </td>  <td><textarea cols=40 rows=5 name="content">[[${m.content}]]</textarea> </td></tr>
+<tr><td> 등록일 </td>  <td>[[${#dates.format(m.createDate, 'yyyy-MM-dd')}]] </td></tr>
+<tr><td> 조회수 </td>  <td>[[${m.cnt}]] </td></tr>
+<tr><td align="center" colspan=2><input  type=submit  value="수정하기"/> </td></tr>
+
+</table>
+</form>
+<br>
+<a  th:href="@{getBoardList.do}">목록보기</a> &emsp;
+<a  th:href="@{deleteBoard.do(seq=${seq})}">삭제</a> &emsp;
+<a  th:href="@{insertBoard}">글등록</a> &emsp;
+
+</div>
+
+</body>
+
+</html>

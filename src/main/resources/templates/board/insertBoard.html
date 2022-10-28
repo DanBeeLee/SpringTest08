@@ -1,0 +1,33 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  
+</head>
+<body th:align="center">
+
+ <div align="center">
+<h2> 게시판 글등록 ( <a th:href="@{index.html}">처음으로</a>) </h2>
+
+<form action=/board/insertBoard.do>
+<table border=1 >
+<tr><td> 제목 </td>  <td><input  type=text  name="title"> </td></tr>  
+<tr><td> 작성자 </td>  
+<td>
+  <select  name="writer"> 
+  <option value="member"> 둘 리 </option>
+  <option value="admin"> 도우너 </option>
+  </select>
+  </td>  
+</tr>
+<tr><td> 내용 </td>  <td><textarea cols=40 rows=5 name="content"></textarea> </td></tr>
+<tr><td align="center" colspan=2><input  type=submit  value="게시글등록"/> </td></tr>
+
+</table>
+</form>
+<br>
+<a  th:href="@{/board/getBoardList.do}">목록보기</a>
+
+</div>
+
+</body>
+
+</html>

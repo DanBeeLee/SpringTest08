@@ -1,0 +1,44 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+  
+</head>
+<body th:align="center">
+
+ <div align="center">
+<h2> 게시판 목록보기 ( <a th:href="@{/index.html}">처음으로</a>) </h2>
+<span sec:authorize="isAuthenticated()">
+
+<span sec:authentication="principal.member.name"></span>
+
+<h3> <a th:href="@{/system/logout.do}"> LOG_OUT </a></h3>
+<h3> <a th:href="@{/admin/adminPage.do}"> 게시판관리 </a></h3>
+
+<table border=1 >
+<tr align="center"> 
+ <th > 번호 </th> <th> 제목 </th> <th> 글쓴이 </th>
+ <th> 날짜 </th> <th> 조회수 </th>
+
+</tr>
+
+<tr align="center"  th:each="m , state : ${li}"> 
+
+ <td th:text="${m.seq}" /> 
+
+ <td>
+   <a th:href="@{/board/getBoard.do(seq=${m.seq} )}" th:text="${m.title}" ></a>
+ </td>
+ 
+ <td th:text="${m.name}" />
+ <td th:text="${#dates.format(m.createDate, 'yyyy-MM-dd')}" />
+ <td th:text="${m.cnt}" /> 
+ 
+ </tr>
+</table>
+
+<a  th:href="@{/board/insertBoard}">새글 등록</a>
+</div>
+
+</body>
+
+</html>

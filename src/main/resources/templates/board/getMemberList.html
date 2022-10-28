@@ -1,0 +1,40 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  
+</head>
+<body th:align="center">
+
+ <div align="center">
+<h2> 회원목록보기 ( <a th:href="@{/index.html}">처음으로</a>) </h2>
+
+
+<h3> <a th:href="@{/system/logout.do}"> LOG_OUT </a></h3>
+<h3> <a th:href="@{/admin/adminPage.do}"> 게시판관리 </a></h3>
+
+<table border=1 >
+<tr align="center"> 
+ <th > 아이디(삭제) </th> <th> 비밀번호 </th> <th> 이름 </th>
+ <th> 권한 </th> <th> 사용가능 </th>
+
+</tr>
+
+<tr align="center"  th:each="m , state : ${li}"> 
+
+
+ <td>
+   <a th:href="@{/board/delete.do(id=${m.id},writer=${m.id})}" th:text="${m.id}" ></a>
+ </td>
+ 
+ <td th:text="${m.password}" />
+ <td th:text="${m.name}" />
+  <td th:text="${m.role}" />
+ <td th:text="${m.enabled}" /> 
+ 
+ </tr>
+</table>
+
+</div>
+
+</body>
+
+</html>
